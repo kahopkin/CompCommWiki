@@ -2,7 +2,7 @@ As an alternative to using Azure Front Door, you can register a custom domain fo
 
 ## Fresh deployment
 
-Follow the steps in the [Deployment guide](Deployment-guide), modified as follows:
+##Follow the steps in the [Deployment guide](Deployment-guide), modified as follows:
 1. Follow **Step 1: Register Azure AD application** unchanged.
 2. When filling in the template parameters in **Step 2: Deploy to your Azure subscription**, set
     * **Custom domain option** = "Custom domain name (recommended)"
@@ -15,4 +15,4 @@ Follow the steps in the [Deployment guide](Deployment-guide), modified as follow
 6. Go to the Azure App Service page in the Azure Portal, click on "Configuration", then set
     * **AzureAd:ApplicationIdURI** = `api://<your_domain_name>` (for example, `api://companycommunicator.contoso.com`)
 6. Continue with the rest of the deployment guide, substituting your domain name for `%appDomain%`.
-    * For example, if your custom domain is `companycommunicator.contoso.com`, you would set the Redirect URI of your Azure AD application to `https://companycommunicator.contoso.com/signin-simple-end`, and its Application URI would be `api://companycommunicator.contoso.com`.
+    * For example, if your custom domain is `companycommunicator.contoso.com`, -you would set the Redirect URI of your Azure AD application to `https://companycommunicator.contoso.com/signin-simple-end`, and its Application URI would be `api://companycommunicator.contoso.com`.
