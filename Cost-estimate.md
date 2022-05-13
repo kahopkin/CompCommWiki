@@ -3,7 +3,7 @@
 The estimate below assumes:
 * 1000 users in the tenant
 * 1 message sent to all users each week (~5/month)
-* Administrator opts to create a custom domain name and obtain an SSL certificate for the site. 
+* Administrator opts to create a custom domain name and obtain an SSL certificate for the site.
     * When purchased through Azure, this is *typically* ~$12 for a domain name, and $75/year for the SSL certificate.
     * If you choose to use Azure Front Door, that adds a monthly cost of $46 (for 2 routing rules + minimal bandwidth consumption).
 
@@ -14,7 +14,7 @@ We ignore:
 * Operations associated with the authors viewing the tab, given the assumption that they are sending only 5 messages/month.
 * Executions associated with Prep or Send function, as the execution count is trivial to the calculations.
 
-## SKU recommendations
+### SKU recommendations
 
 The recommended SKUs for a production environment are:
 * App Service: Standard (S2)
@@ -24,7 +24,7 @@ The recommended SKUs for a production environment are:
 
 **Number of messages sent**: 1000 users * 5 messages/month = 5000 messages
 
-**Data storage**: 1 GB max    
+**Data storage**: 1 GB max
 * Messages are on the order of KBs
 
 **Table data operations**:
@@ -45,7 +45,7 @@ The recommended SKUs for a production environment are:
 **Azure Function**:
 > For Gb-sec pricing calculation, please refer this formula.
 (Memory Size * Execution Time * Execution Count)/1024000.
-Min. memory size = 128 Mb. 
+Min. memory size = 128 Mb.
 Min. execution time = 100 ms.
 
 * Send function
@@ -61,11 +61,11 @@ Prices were taken from the [Azure Pricing Overview](https://azure.microsoft.com/
 Use the [Azure Pricing Calculator](https://azure.com/e/c3bb51eeb3284a399ac2e9034883fcfa) to model different service tiers and usage patterns.
 
 Resource                                    | Tier          | Load              | Monthly price
----                                         | ---           | ---               | --- 
+---                                         | ---           | ---               | ---
 Storage account (Table)                     | Standard_LRS  | < 1GB data, 45000 operations | $0.045 + $0.01 = $0.05
 Bot Channels Registration                   | F0            | N/A               | Free
 App Service Plan                            | S2            | 744 hours         | $148.80
-App Service (Bot + Tab)                     | -             |                   | (charged to App Service Plan) 
+App Service (Bot + Tab)                     | -             |                   | (charged to App Service Plan)
 Azure Function                              | Dedicated     | 10000 executions   | (free up to 1 million executions)
 Service Bus                                 | Basic         | 10000 operations  | $0.05
 Application Insights                        | -             | < 5GB data        | (free up to 5 GB)
@@ -74,7 +74,7 @@ Application Insights                        | -             | < 5GB data        
 
 ## Estimated load - 1M messages
 
-**Data storage**: 3 GB max    
+**Data storage**: 3 GB max
 * Messages are on the order of KBs
 
 **Number of messages sent**: 1M messages
@@ -97,7 +97,7 @@ Application Insights                        | -             | < 5GB data        
 **Azure Function**:
 > For Gb-sec pricing calculation, please refer this formula.
 (Memory Size * Execution Time * Execution Count)/1024000.
-Min. memory size = 128 Mb. 
+Min. memory size = 128 Mb.
 Min. execution time = 100 ms.
 
 * Send function
@@ -113,11 +113,11 @@ Prices were taken from the [Azure Pricing Overview](https://azure.microsoft.com/
 Use the [Azure Pricing Calculator](https://azure.com/e/c3bb51eeb3284a399ac2e9034883fcfa) to model different service tiers and usage patterns.
 
 Resource                                    | Tier          | Load              | Monthly price
----                                         | ---           | ---               | --- 
+---                                         | ---           | ---               | ---
 Storage account (Table)                     | Standard_LRS  | < 3GB data, 9M operations | $0.14 + $0.32 = $0.46
 Bot Channels Registration                   | F0            | N/A               | Free
 App Service Plan                            | S2            | 744 hours         | $148.80
-App Service (Bot + Tab)                     | -             |                   | (charged to App Service Plan) 
+App Service (Bot + Tab)                     | -             |                   | (charged to App Service Plan)
 Azure Function                              | Dedicated     | 1M executions     | (free up to 1 million executions)
 Service Bus                                 | Basic         | 2M operations     | $0.10
 Application Insights                        | -             | < 5GB data        | (free up to 5 GB)
@@ -127,7 +127,7 @@ Application Insights                        | -             | < 5GB data        
 
 **Number of messages sent**: 2M messages
 
-**Data storage**: 6 GB max    
+**Data storage**: 6 GB max
 * Messages are on the order of KBs
 
 **Table data operations**:
@@ -148,7 +148,7 @@ Application Insights                        | -             | < 5GB data        
 **Azure Function**:
 > For Gb-sec pricing calculation, please refer this formula.
 (Memory Size * Execution Time * Execution Count)/1024000.
-Min. memory size = 128 Mb. 
+Min. memory size = 128 Mb.
 Min. execution time = 100 ms.
 
 * Send function
@@ -164,12 +164,12 @@ Prices were taken from the [Azure Pricing Overview](https://azure.microsoft.com/
 Use the [Azure Pricing Calculator](https://azure.com/e/c3bb51eeb3284a399ac2e9034883fcfa) to model different service tiers and usage patterns.
 
 Resource                                    | Tier          | Load              | Monthly price
----                                         | ---           | ---               | --- 
+---                                         | ---           | ---               | ---
 Storage account (Table)                     | Standard_LRS  |  < 6GB data, 18M operations | $0.27 + $0.65 = $0.92
 Bot Channels Registration                   | F0            | N/A               | Free
 App Service Plan                            | S2            | 744 hours         | $148.80
-App Service (Bot + Tab)                     | -             |                   | (charged to App Service Plan) 
-Azure Function                              | Dedicated     | 2M executions     | $5.80 
+App Service (Bot + Tab)                     | -             |                   | (charged to App Service Plan)
+Azure Function                              | Dedicated     | 2M executions     | $5.80
 Service Bus                                 | Basic         | 2M operations     | $0.20
 Application Insights                        | -             | < 5GB data        | (free up to 5 GB)
 **Total**                                   |               |                   | **$155.72**
